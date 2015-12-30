@@ -5,13 +5,13 @@ RUN cpanm Net::SSLeay
 
 # Had to pre-install these for Moo to build, odd
 RUN cpanm Type::Tiny Types::Standard Type::Library
-RUN cpanm Moo
+RUN cpanm JSON::XS Moo
 
 RUN cpanm Mojo::Redis2 List::MoreUtils Redis::DistLock
 RUN cpanm MongoDB
 # MongoDB::Async Mango MongoDBI  -- not working yet in here
 
-RUN cpanm Crypt::PK::ECC Bytes::Random::Secure
+RUN cpanm CryptX Crypt::PK::ECC Bytes::Random::Secure
 
 ##not sure what the test isn't liking, but having to force this
 RUN cpanm -f Term::ReadKey
@@ -20,5 +20,5 @@ RUN cpanm -f Term::ReadKey
 ENV TZ=UTC
 RUN cpanm Dist::Zilla
 
-RUN cpanm DateTime::Tiny Data::Faker JSON::XS
-RUN Meerkat
+
+RUN rm -rf .cpanm
