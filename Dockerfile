@@ -20,5 +20,8 @@ RUN cpanm -f Term::ReadKey
 ENV TZ=UTC
 RUN cpanm Dist::Zilla
 
+ENV LC_ALL=C
+RUN cpanm -f DateTime::Tiny
+RUN cpanm Meerkat
 
 RUN rm -rf .cpanm
