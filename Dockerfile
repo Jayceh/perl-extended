@@ -1,6 +1,6 @@
 FROM scottw/alpine-perl
 
-RUN apk update && apk add openssl-doc openssl-dev readline readline-dev && apk upgrade musl musl-dev
+RUN apk update && apk add openssl-doc openssl-dev readline readline-dev ncurses-dev musl musl-dev && apk upgrade
 RUN cpanm Net::SSLeay
 
 # Had to pre-install these for Moo to build, odd
@@ -22,6 +22,7 @@ RUN cpanm Dist::Zilla
 
 ENV LC_ALL=C
 RUN cpanm -f DateTime::Tiny
-RUN cpanm Meerkat
+ENV TERM=xterm
+RUN cpanm Meerkat Term::ReadLine::Gnu
 
 RUN rm -rf .cpanm
